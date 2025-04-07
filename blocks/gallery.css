@@ -61,6 +61,18 @@
   background-repeat: no-repeat;
 }
 
+.gallery__card-like:active {
+  width: 21px;
+  height: 19px;
+  background-image: url(../images/like-active.svg);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+  align-self: center;
+  opacity: 1;
+}
+
 .gallery__card-like:hover {
   opacity: 0.5;
   cursor: pointer;
@@ -74,6 +86,5 @@
     margin-top: 50px;
     max-width: 282px;
     width: 100%;
-    padding: 10px;
   }
 }
