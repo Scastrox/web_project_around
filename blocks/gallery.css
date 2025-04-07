@@ -1,0 +1,79 @@
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 20px;
+  width: 880px;
+  margin: 0px auto 67px auto;
+}
+
+.gallery__card {
+  background: #ffffff;
+  border-radius: 10px;
+  height: 361px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery__card-image {
+  width: 282px;
+  height: 282px;
+}
+
+.gallery__card-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+  width: 246px;
+  margin: 25px auto 30px 20px;
+}
+
+.gallery__card-title {
+  font-family: "Inter";
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+.gallery__card-like {
+  width: 21px;
+  height: 19px;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+  align-self: center;
+}
+
+.gallery__card-like-active {
+  display: flex;
+  margin-right: 21px;
+  background: url(../images/like-active.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.gallery__card-like:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 880px) {
+  .gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 21px 17px;
+    margin-top: 50px;
+    max-width: 282px;
+    width: 100%;
+    padding: 10px;
+  }
+}
