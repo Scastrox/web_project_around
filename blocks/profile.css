@@ -50,7 +50,7 @@
   cursor: pointer;
 }
 
-.profile__info-details {
+.profile__info-description {
   font-family: "Inter-regular";
   font-weight: 400;
   font-size: 18px;
@@ -105,7 +105,7 @@
     align-self: center;
   }
 
-  .profile__info-details {
+  .profile__info-description {
     margin-top: 14px;
     font-size: 14px;
     width: 282px;
