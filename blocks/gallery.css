@@ -53,14 +53,6 @@
   align-self: center;
 }
 
-.gallery__card-like-active {
-  display: flex;
-  margin-right: 21px;
-  background: url(../images/like-active.svg);
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
 .gallery__card-like:active {
   width: 21px;
   height: 19px;

@@ -9,7 +9,6 @@
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  object-fit: cover;
 }
 
 .profile__info {
@@ -36,13 +35,11 @@
   width: 24px;
   height: 24px;
   border: 1px solid #ffffff;
-  background-size: 10px 10px;
   margin-left: 18px;
   margin-top: 15px;
   background: none;
   background-image: url("../images/edit-button.svg");
   background-position: center;
-  background-repeat: no-repeat;
 }
 
 .profile__info-edit-button:hover {
