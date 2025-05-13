@@ -93,6 +93,59 @@
   cursor: pointer;
 }
 
+.popup__add-form {
+  display: flex;
+  flex-direction: column;
+  width: 238px;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup__add-form-field-title {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  width: 358px;
+  height: 27.26px;
+  margin-bottom: 29px;
+  border: none;
+  border-bottom: 1px solid gray;
+  padding-bottom: 5px;
+}
+
+.popup__add-form-field-image {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  width: 358px;
+  height: 27.26px;
+  border: none;
+  border-bottom: 1px solid gray;
+  padding-bottom: 5px;
+}
+
+.popup__add-form-create-button {
+  background: #000000;
+  border-radius: 2px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #ffffff;
+  width: 358px;
+  height: 56px;
+  margin-top: 48px;
+}
+
 .popup__close-button {
   background-image: url("../images/close-icon.svg");
   background-position: center;

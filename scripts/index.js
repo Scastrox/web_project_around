@@ -1,13 +1,24 @@
-const openFormButton = document.querySelector(".profile__info-edit-button");
-const popup = document.querySelector(".popup");
-const closeButton = popup.querySelector(".popup__close-button");
-const profileName = document.querySelector(".profile__info-name");
-const profileDescription = document.querySelector(".profile__info-description");
-const inputName = document.querySelector(".popup__form-field-name");
+// =====================
+// Selección de elementos del DOM
+// =====================
+const openFormButton = document.querySelector(".profile__info-edit-button"); // Botón para abrir el popup de edición de perfil
+const addButton = document.querySelector(".profile__info-add-button"); // Botón para abrir el popup de agregar lugar
+const popup = document.querySelector(".popup"); // Contenedor principal del popup
+const closeButton = popup.querySelector(".popup__close-button"); // Botón para cerrar el popup
+const profileName = document.querySelector(".profile__info-name"); // Elemento que muestra el nombre del perfil
+const profileDescription = document.querySelector(".profile__info-description"); // Elemento que muestra la descripción del perfil
+const inputName = document.querySelector(".popup__form-field-name"); // Input para el nombre en el formulario de edición
 const inputDescription = document.querySelector(
   ".popup__form-field-description"
-);
-const form = document.querySelector(".popup__form");
+); // Input para la descripción en el formulario de edición
+const form = document.querySelector(".popup__form"); // Formulario de edición de perfil
+const addForm = document.querySelector(".popup__add-form"); // Formulario para agregar un nuevo lugar
+const popupEditContainer = document.querySelector(".popup__container-edit"); // Contenedor del formulario de edición
+const popupAddContainer = document.querySelector(".popup__container-add"); // Contenedor del formulario de agregar
+
+// =====================
+// Tarjetas iniciales
+// =====================
 const initialCards = [
   {
     name: "Valle de Yosemite",
@@ -35,20 +46,59 @@ const initialCards = [
   },
 ];
 
-function toggleForm() {
+// =====================
+// Funciones para abrir popups
+// =====================
+function openEditForm() {
+  popup.classList.add("popup_visible");
+  popupEditContainer.style.display = "block";
+  popupAddContainer.style.display = "none";
   inputName.value = profileName.textContent;
   inputDescription.value = profileDescription.textContent;
-  popup.classList.toggle("popup_visible");
 }
 
-openFormButton.addEventListener("click", toggleForm);
-closeButton.addEventListener("click", toggleForm);
+function openAddForm() {
+  popup.classList.add("popup_visible");
+  popupEditContainer.style.display = "none";
+  popupAddContainer.style.display = "block";
+  addForm.reset();
+}
 
-function handleProfileFormSubmit(event) {
-  event.preventDefault();
+// =====================
+// Funciones para cerrar popups
+// =====================
+function closePopupByButton() {
+  popup.classList.remove("popup_visible");
+}
+
+function closePopupByOverlay(evt) {
+  if (evt.target === popup) {
+    popup.classList.remove("popup_visible");
+  }
+}
+
+function closePopupByEsc(evt) {
+  if (evt.key === "Escape") {
+    popup.classList.remove("popup_visible");
+  }
+}
+
+// =====================
+// Funciones de manejo de formularios
+// =====================
+function handleProfileFormSubmit(evt) {
+  evt.preventDefault();
   profileName.textContent = inputName.value;
   profileDescription.textContent = inputDescription.value;
   popup.classList.remove("popup_visible");
 }
 
+// =====================
+// Asignación de eventos
+// =====================
+openFormButton.addEventListener("click", openEditForm);
+addButton.addEventListener("click", openAddForm);
+closeButton.addEventListener("click", closePopupByButton);
+popup.addEventListener("click", closePopupByOverlay);
+document.addEventListener("keydown", closePopupByEsc);
 form.addEventListener("submit", handleProfileFormSubmit);
