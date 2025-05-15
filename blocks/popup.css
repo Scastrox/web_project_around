@@ -181,11 +181,25 @@
     height: 46px;
   }
 
+  .popup__add-form-create-button {
+    max-width: 238px;
+    height: 46px;
+  }
+
   .popup__form-field-name {
     max-width: 238px;
   }
 
+  .popup__add-form-field-title {
+    max-width: 238px;
+  }
+
   .popup__form-field-description {
+    max-width: 238px;
+    width: 100%;
+  }
+
+  .popup__add-form-field-image {
     max-width: 238px;
     width: 100%;
   }
