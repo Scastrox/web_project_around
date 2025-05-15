@@ -146,6 +146,11 @@
   margin-top: 48px;
 }
 
+.popup__add-form-create-button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
 .popup__close-button {
   background-image: url("../images/close-icon.svg");
   background-position: center;
