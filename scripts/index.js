@@ -15,6 +15,7 @@ const form = document.querySelector(".popup__form"); // Formulario de edición d
 const addForm = document.querySelector(".popup__add-form"); // Formulario para agregar un nuevo lugar
 const popupEditContainer = document.querySelector(".popup__container-edit"); // Contenedor del formulario de edición
 const popupAddContainer = document.querySelector(".popup__container-add"); // Contenedor del formulario de agregar
+const gallery = document.querySelector(".gallery"); // Lista de tarjetas en la galería
 
 // =====================
 // Tarjetas iniciales
@@ -83,6 +84,16 @@ function closePopupByEsc(evt) {
   }
 }
 
+function addCard(name, link) {
+  // Crea y agrega la nueva tarjeta
+  const cardTemplate = document.querySelector("#card-template").content;
+  const cardElement = cardTemplate.cloneNode(true);
+  cardElement.querySelector(".gallery__card-image").src = link;
+  cardElement.querySelector(".gallery__card-image").alt = name;
+  cardElement.querySelector(".gallery__card-title").textContent = name;
+  gallery.prepend(cardElement);
+}
+
 // =====================
 // Funciones de manejo de formularios
 // =====================
@@ -91,6 +102,16 @@ function handleProfileFormSubmit(evt) {
   profileName.textContent = inputName.value;
   profileDescription.textContent = inputDescription.value;
   popup.classList.remove("popup_visible");
+}
+
+function handleAddFormSubmit(evt) {
+  evt.preventDefault();
+  // Usar los selectores correctos según el HTML
+  const name = addForm.querySelector(".popup__add-form-field-title").value;
+  const link = addForm.querySelector(".popup__add-form-field-image").value;
+  addCard(name, link);
+  popup.classList.remove("popup_visible");
+  addForm.reset();
 }
 
 // =====================
@@ -102,3 +123,4 @@ closeButton.addEventListener("click", closePopupByButton);
 popup.addEventListener("click", closePopupByOverlay);
 document.addEventListener("keydown", closePopupByEsc);
 form.addEventListener("submit", handleProfileFormSubmit);
+addForm.addEventListener("submit", handleAddFormSubmit);

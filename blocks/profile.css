@@ -1,8 +1,20 @@
 .profile {
   display: flex;
-  width: 880px;
-  height: 120px;
-  margin: 0 auto 50px auto;
+  align-items: center;
+  max-width: 880px;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.profile__container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.profile__content {
+  display: flex;
+  align-items: center;
 }
 
 .profile__picture {
@@ -12,22 +24,29 @@
 }
 
 .profile__info {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-content: center;
-  margin: 20px 0 0 30px;
-  height: 77px;
-  width: 415px;
+  margin-left: 30px;
 }
 
 .profile__info-name {
-  color: #fff;
+  margin: 0;
+  margin-bottom: 16px;
   font-family: "Inter";
+  font-style: normal;
   font-weight: 500;
   font-size: 42px;
-  line-height: 1.1;
+  line-height: 0.6;
+  color: #ffffff;
+  text-overflow: ellipsis;
+}
+
+.profile__info-description {
   margin: 0;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #ffffff;
 }
 
 .profile__info-edit-button {
@@ -35,11 +54,13 @@
   width: 24px;
   height: 24px;
   border: 1px solid #ffffff;
+  background-size: 10px 10px;
+  margin-bottom: 32px;
   margin-left: 18px;
-  margin-top: 15px;
   background: none;
   background-image: url("../images/edit-button.svg");
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 .profile__info-edit-button:hover {
@@ -47,14 +68,6 @@
   cursor: pointer;
 }
 
-.profile__info-description {
-  font-family: "Inter";
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 1;
-  color: #fff;
-  margin: 16px 0 auto 0;
-}
 .profile__info-add-button {
   width: 150px;
   height: 50px;
@@ -63,7 +76,7 @@
   background-repeat: no-repeat;
   background-color: #000000;
   border: 2px solid #ffffff;
-  margin: 30px 0 0 165px;
+  margin: 0 0 0 auto;
 }
 
 .profile__info-add-button:hover {
@@ -73,46 +86,71 @@
 
 @media screen and (max-width: 880px) {
   .profile {
-    width: 282px;
-    height: 286px;
-    margin: 0px auto 36px auto;
-    flex-direction: column;
+    max-width: 282px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  .profile__container {
+    display: grid;
+  }
+
+  .profile__content {
+    display: grid;
+    grid-column: 2 / 5;
+    margin-left: 22px;
   }
 
   .profile__picture {
-    align-self: center;
+    margin-bottom: 30px;
+    display: grid;
+    grid-row: 1 / 2;
+    justify-self: center;
   }
 
   .profile__info {
-    margin: 20px 0 36px 0;
-    max-width: 282px;
+    margin-left: 0;
+    display: grid;
+    grid-row: 2 / 3;
   }
 
   .profile__info-name {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
     font-size: 22px;
-    width: 196px;
-    height: 22px;
-    margin: 0 20px 0px 40px;
+    line-height: 27px;
+    text-align: center;
+    color: #ffffff;
   }
+
   .profile__info-edit-button {
-    height: 18px;
-    width: 18px;
-    margin: 0;
-    padding: 0;
-    align-self: center;
+    margin-bottom: 40px;
+    margin-left: 6px;
+    grid-column: 2 / 4;
+    grid-row: 2 / 3;
   }
 
   .profile__info-description {
-    margin-top: 14px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
     font-size: 14px;
-    width: 282px;
+    line-height: 17px;
     text-align: center;
+    color: #ffffff;
   }
 
   .profile__info-add-button {
-    width: 100%;
     max-width: 282px;
-    margin: 0 auto;
+    width: 100%;
+    margin: 36px 0 0 0;
+    display: grid;
+    grid-column: 1 / 5;
     background-image: url("../images/add-button-mobile.svg");
   }
 }
