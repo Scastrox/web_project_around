@@ -84,8 +84,10 @@ function closePopupByEsc(evt) {
   }
 }
 
+// =====================
+// Función para agregar una tarjeta a la galería
+// =====================
 function addCard(name, link) {
-  // Crea y agrega la nueva tarjeta
   const cardTemplate = document.querySelector("#card-template").content;
   const cardElement = cardTemplate.cloneNode(true);
   cardElement.querySelector(".gallery__card-image").src = link;
@@ -106,7 +108,6 @@ function handleProfileFormSubmit(evt) {
 
 function handleAddFormSubmit(evt) {
   evt.preventDefault();
-  // Usar los selectores correctos según el HTML
   const name = addForm.querySelector(".popup__add-form-field-title").value;
   const link = addForm.querySelector(".popup__add-form-field-image").value;
   addCard(name, link);
