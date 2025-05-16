@@ -22,6 +22,11 @@
   height: 282px;
 }
 
+.gallery__card-image:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
 .gallery__card-info {
   display: flex;
   justify-content: space-between;

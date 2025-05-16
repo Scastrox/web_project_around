@@ -39,65 +39,13 @@
       </section>
 
       <section class="gallery">
-        <div class="gallery__card">
-          <button class="gallery__card-delete" type="button"></button>
-          <img class="gallery__card-image" src="./images/yosemite-valley.jpg" alt="yosemite">
-          <div class="gallery__card-info">
-            <h2 class="gallery__card-title">Valle de Yosemite</h2>
-            <img class="gallery__card-like" src="images/like.svg">
-          </div>
-        </div>
-
-        <div class="gallery__card">
-          <button class="gallery__card-delete" type="button"></button>
-          <img class="gallery__card-image" src="./images/louise.jpg" alt="lago-louise">
-          <div class="gallery__card-info">
-            <h2 class="gallery__card-title">Lago Louise </h2>
-            <img class="gallery__card-like" src="images/like.svg">
-          </div>
-        </div>
-
-        <div class="gallery__card">
-          <button class="gallery__card-delete" type="button"></button>
-          <img class="gallery__card-image" src="./images/calvas.jpg" alt="montañas-calvas">
-          <div class="gallery__card-info">
-            <h2 class="gallery__card-title">Montañas Calvas</h2>
-            <img class="gallery__card-like" src="images/like.svg">
-          </div>
-        </div>
-
-        <div class="gallery__card">
-          <button class="gallery__card-delete" type="button"></button>
-          <img class="gallery__card-image" src="./images/latemar.jpg" alt="latemar">
-          <div class="gallery__card-info">
-            <h2 class="gallery__card-title">Latemar</h2>
-            <img class="gallery__card-like" src="images/like.svg">
-          </div>
-        </div>
-
-        <div class="gallery__card">
-          <button class="gallery__card-delete" type="button"></button>
-          <img class="gallery__card-image" src="./images/vanois.jpg" alt="vanois">
-          <div class="gallery__card-info">
-            <h2 class="gallery__card-title">Parque Nacional de la Vanoise</h2>
-            <img class="gallery__card-like" src="images/like.svg">
-          </div>
-        </div>
-
-        <div class="gallery__card">
-          <button class="gallery__card-delete" type="button"></button>
-          <img class="gallery__card-image" src="./images/di-braies.jpg" alt="lago-brais">
-          <div class="gallery__card-info">
-            <h2 class="gallery__card-title">Lago di Braies</h2>
-            <img class="gallery__card-like" src="images/like.svg">
-          </div>
-        </div>
+        <!-- Las tarjetas se generarán dinámicamente con JavaScript -->
       </section>
 
       <template id="card-template">
         <div class="gallery__card">
-          <button class="gallery__card-delete" type="button"></button>
           <img class="gallery__card-image" src="" alt="">
+          <button class="gallery__card-delete" type="button"></button>
           <div class="gallery__card-info">
             <h2 class="gallery__card-title"></h2>
             <img class="gallery__card-like" src="images/like.svg">
@@ -128,6 +76,15 @@
               placeholder="Enlace a la imagen" required="">
             <button type="submit" class="popup__add-form-create-button">Crear</button>
           </form>
+        </div>
+
+        <div class="popup__image">
+          <div class="popup__image-container">
+            <img class="popup__image-photo" src="./images/lago-louise.png" alt="Lago Louise">
+          </div>
+          <div class="popup__image-text-container">
+            <p class="popup__image-text">Lago Louise</p>
+          </div>
         </div>
 
       </section>

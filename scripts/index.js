@@ -1,6 +1,4 @@
-// =====================
 // Selección de elementos del DOM
-// =====================
 const openFormButton = document.querySelector(".profile__info-edit-button"); // Botón para abrir el popup de edición de perfil
 const addButton = document.querySelector(".profile__info-add-button"); // Botón para abrir el popup de agregar lugar
 const popup = document.querySelector(".popup"); // Contenedor principal del popup
@@ -16,11 +14,15 @@ const addForm = document.querySelector(".popup__add-form"); // Formulario para a
 const popupEditContainer = document.querySelector(".popup__container-edit"); // Contenedor del formulario de edición
 const popupAddContainer = document.querySelector(".popup__container-add"); // Contenedor del formulario de agregar
 const gallery = document.querySelector(".gallery"); // Lista de tarjetas en la galería
+const galleryCard = document.querySelector(".gallery__card"); // Tarjeta de la galería
 const likeButtons = document.querySelectorAll(".gallery__card-like"); // Botón de "me gusta" en la tarjetas
 const deleteButtons = document.querySelectorAll(".gallery__card-delete"); // Botón de eliminar tarjeta
-// =====================
+const imagePopup = document.querySelector(".popup__image"); // Popup para mostrar la imagen ampliada
+const imagePopupPhoto = document.querySelector(".popup__image-photo");
+const imagePopupName = document.querySelector(".popup__image-container"); // Título de la imagen ampliada
+const popupImageText = document.querySelector(".popup__image-text"); // Seleccionar el texto del popup
+
 // Tarjetas iniciales
-// =====================
 const initialCards = [
   {
     name: "Valle de Yosemite",
@@ -48,9 +50,7 @@ const initialCards = [
   },
 ];
 
-// =====================
 // Funciones para abrir popups
-// =====================
 function openEditForm() {
   popup.classList.add("popup_visible");
   popupEditContainer.style.display = "block";
@@ -62,13 +62,22 @@ function openEditForm() {
 function openAddForm() {
   popup.classList.add("popup_visible");
   popupEditContainer.style.display = "none";
+  imagePopup.style.display = "none";
   popupAddContainer.style.display = "block";
   addForm.reset();
 }
 
-// =====================
+function openImage(name, link) {
+  imagePopupPhoto.src = link;
+  imagePopupPhoto.alt = name;
+  popupImageText.textContent = name;
+  popup.classList.add("popup_visible");
+  imagePopup.style.display = "block";
+  popupEditContainer.style.display = "none";
+  popupAddContainer.style.display = "none";
+}
+
 // Funciones para cerrar popups
-// =====================
 function closePopupByButton() {
   popup.classList.remove("popup_visible");
 }
@@ -85,21 +94,26 @@ function closePopupByEsc(evt) {
   }
 }
 
-// =====================
 // Función para agregar una tarjeta a la galería
-// =====================
 function addCard(name, link) {
   const cardTemplate = document.querySelector("#card-template").content;
   const cardElement = cardTemplate.cloneNode(true);
-  cardElement.querySelector(".gallery__card-image").src = link;
-  cardElement.querySelector(".gallery__card-image").alt = name;
-  cardElement.querySelector(".gallery__card-title").textContent = name;
+  const cardImage = cardElement.querySelector(".gallery__card-image");
+  const cardTitle = cardElement.querySelector(".gallery__card-title");
+  const likeButton = cardElement.querySelector(".gallery__card-like");
+  const deleteButton = cardElement.querySelector(".gallery__card-delete");
+
+  cardImage.src = link;
+  cardImage.alt = name;
+  cardTitle.textContent = name;
+
+  likeButton.addEventListener("click", handleLikeButtonClick);
+  deleteButton.addEventListener("click", deleteCard);
+  cardImage.addEventListener("click", () => openImage(name, link));
   gallery.prepend(cardElement);
 }
 
-// =====================
 // Funciones de manejo de formularios
-// =====================
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = inputName.value;
@@ -116,33 +130,25 @@ function handleAddFormSubmit(evt) {
   addForm.reset();
 }
 
-// =====================
 // Función para manejar el evento de "me gusta"
-// =====================
 function handleLikeButtonClick(evt) {
   evt.target.classList.toggle("gallery__card-like_active");
 }
 
-// =====================
 // Función para eliminar una tarjeta
-// =====================
 function deleteCard(evt) {
   const card = evt.target.closest(".gallery__card");
   card.remove();
 }
 
-// =====================
 // Función para crear tarjetas iniciales
-// =====================
 function createInitialCards() {
   initialCards.forEach((card) => {
     addCard(card.name, card.link);
   });
 }
 
-// =====================
 // Asignación de eventos
-// =====================
 openFormButton.addEventListener("click", openEditForm);
 addButton.addEventListener("click", openAddForm);
 closeButton.addEventListener("click", closePopupByButton);
@@ -154,3 +160,6 @@ likeButtons.forEach((button) =>
   button.addEventListener("click", handleLikeButtonClick)
 );
 deleteButtons.forEach((button) => button.addEventListener("click", deleteCard));
+
+// Crear las tarjetas iniciales al cargar la página
+createInitialCards();
