@@ -16,6 +16,7 @@ const addForm = document.querySelector(".popup__add-form"); // Formulario para a
 const popupEditContainer = document.querySelector(".popup__container-edit"); // Contenedor del formulario de edición
 const popupAddContainer = document.querySelector(".popup__container-add"); // Contenedor del formulario de agregar
 const gallery = document.querySelector(".gallery"); // Lista de tarjetas en la galería
+const likeButtons = document.querySelectorAll(".gallery__card-like"); // Botón de "me gusta" en la tarjetas
 
 // =====================
 // Tarjetas iniciales
@@ -115,6 +116,10 @@ function handleAddFormSubmit(evt) {
   addForm.reset();
 }
 
+function handleLikeButtonClick(evt) {
+  evt.target.classList.toggle("gallery__card-like_active");
+}
+
 // =====================
 // Asignación de eventos
 // =====================
@@ -125,3 +130,6 @@ popup.addEventListener("click", closePopupByOverlay);
 document.addEventListener("keydown", closePopupByEsc);
 form.addEventListener("submit", handleProfileFormSubmit);
 addForm.addEventListener("submit", handleAddFormSubmit);
+likeButtons.forEach((button) =>
+  button.addEventListener("click", handleLikeButtonClick)
+);

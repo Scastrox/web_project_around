@@ -53,7 +53,7 @@
   align-self: center;
 }
 
-.gallery__card-like:active {
+.gallery__card-like_active {
   width: 21px;
   height: 19px;
   background-image: url(../images/like-active.svg);
