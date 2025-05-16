@@ -8,6 +8,7 @@ Este es mi **primer proyecto usando JavaScript**, como parte de mi formación en
 
 - Mostrar el nombre del usuario y su foto de perfil.
 - Mostrar una galería de cartas con fotos de lugares visitados.
+- Agregar y eliminar cartas con fotos y nombres personalizados.
 - Código estructurado en HTML, CSS y JavaScript.
 - Diseño responsivo y adaptado para diferentes tamaños de pantalla.
 
