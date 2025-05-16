@@ -16,7 +16,7 @@ const popupAddContainer = document.querySelector(".popup__container-add");
 const gallery = document.querySelector(".gallery");
 const imagePopup = document.querySelector(".popup__image");
 const imagePopupPhoto = document.querySelector(".popup__image-photo");
-const popupImageText = document.querySelector(".popup__image-text");
+const imagePopupText = document.querySelector(".popup__image-text");
 
 // Tarjetas iniciales
 const initialCards = [
@@ -67,7 +67,7 @@ function openAddForm() {
 function openImage(name, link) {
   imagePopupPhoto.src = link;
   imagePopupPhoto.alt = name;
-  popupImageText.textContent = name;
+  imagePopupText.textContent = name;
   popup.classList.add("popup_visible");
   imagePopup.style.display = "block";
   popupEditContainer.style.display = "none";
