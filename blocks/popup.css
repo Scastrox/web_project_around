@@ -239,6 +239,24 @@
     width: 100%;
   }
 
+  .popup__image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .popup__image-photo {
+    max-width: 75vw;
+    max-height: 75vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .popup__image-text-container {
+    max-width: 280px;
+  }
+
   .popup__close-button {
     background-image: url("../images/close-icon-mobile.svg");
     background-position: center;
