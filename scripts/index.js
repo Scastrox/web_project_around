@@ -1,26 +1,22 @@
 // Selección de elementos del DOM
-const openFormButton = document.querySelector(".profile__info-edit-button"); // Botón para abrir el popup de edición de perfil
-const addButton = document.querySelector(".profile__info-add-button"); // Botón para abrir el popup de agregar lugar
-const popup = document.querySelector(".popup"); // Contenedor principal del popup
-const closeButton = popup.querySelector(".popup__close-button"); // Botón para cerrar el popup
-const profileName = document.querySelector(".profile__info-name"); // Elemento que muestra el nombre del perfil
-const profileDescription = document.querySelector(".profile__info-description"); // Elemento que muestra la descripción del perfil
-const inputName = document.querySelector(".popup__form-field-name"); // Input para el nombre en el formulario de edición
+const openFormButton = document.querySelector(".profile__info-edit-button");
+const addButton = document.querySelector(".profile__info-add-button");
+const popup = document.querySelector(".popup");
+const closeButton = popup.querySelector(".popup__close-button");
+const profileName = document.querySelector(".profile__info-name");
+const profileDescription = document.querySelector(".profile__info-description");
+const inputName = document.querySelector(".popup__form-field-name");
 const inputDescription = document.querySelector(
   ".popup__form-field-description"
-); // Input para la descripción en el formulario de edición
-const form = document.querySelector(".popup__form"); // Formulario de edición de perfil
-const addForm = document.querySelector(".popup__add-form"); // Formulario para agregar un nuevo lugar
-const popupEditContainer = document.querySelector(".popup__container-edit"); // Contenedor del formulario de edición
-const popupAddContainer = document.querySelector(".popup__container-add"); // Contenedor del formulario de agregar
-const gallery = document.querySelector(".gallery"); // Lista de tarjetas en la galería
-const galleryCard = document.querySelector(".gallery__card"); // Tarjeta de la galería
-const likeButtons = document.querySelectorAll(".gallery__card-like"); // Botón de "me gusta" en la tarjetas
-const deleteButtons = document.querySelectorAll(".gallery__card-delete"); // Botón de eliminar tarjeta
-const imagePopup = document.querySelector(".popup__image"); // Popup para mostrar la imagen ampliada
+);
+const form = document.querySelector(".popup__form");
+const addForm = document.querySelector(".popup__add-form");
+const popupEditContainer = document.querySelector(".popup__container-edit");
+const popupAddContainer = document.querySelector(".popup__container-add");
+const gallery = document.querySelector(".gallery");
+const imagePopup = document.querySelector(".popup__image");
 const imagePopupPhoto = document.querySelector(".popup__image-photo");
-const imagePopupName = document.querySelector(".popup__image-container"); // Título de la imagen ampliada
-const popupImageText = document.querySelector(".popup__image-text"); // Seleccionar el texto del popup
+const popupImageText = document.querySelector(".popup__image-text");
 
 // Tarjetas iniciales
 const initialCards = [
@@ -156,10 +152,6 @@ popup.addEventListener("click", closePopupByOverlay);
 document.addEventListener("keydown", closePopupByEsc);
 form.addEventListener("submit", handleProfileFormSubmit);
 addForm.addEventListener("submit", handleAddFormSubmit);
-likeButtons.forEach((button) =>
-  button.addEventListener("click", handleLikeButtonClick)
-);
-deleteButtons.forEach((button) => button.addEventListener("click", deleteCard));
 
 // Crear las tarjetas iniciales al cargar la página
 createInitialCards();
