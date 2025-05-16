@@ -51,6 +51,7 @@ function openEditForm() {
   popup.classList.add("popup_visible");
   popupEditContainer.style.display = "block";
   popupAddContainer.style.display = "none";
+  imagePopup.style.display = "none";
   inputName.value = profileName.textContent;
   inputDescription.value = profileDescription.textContent;
 }
