@@ -17,7 +17,7 @@ const popupEditContainer = document.querySelector(".popup__container-edit"); // 
 const popupAddContainer = document.querySelector(".popup__container-add"); // Contenedor del formulario de agregar
 const gallery = document.querySelector(".gallery"); // Lista de tarjetas en la galería
 const likeButtons = document.querySelectorAll(".gallery__card-like"); // Botón de "me gusta" en la tarjetas
-
+const deleteButtons = document.querySelectorAll(".gallery__card-delete"); // Botón de eliminar tarjeta
 // =====================
 // Tarjetas iniciales
 // =====================
@@ -116,8 +116,28 @@ function handleAddFormSubmit(evt) {
   addForm.reset();
 }
 
+// =====================
+// Función para manejar el evento de "me gusta"
+// =====================
 function handleLikeButtonClick(evt) {
   evt.target.classList.toggle("gallery__card-like_active");
+}
+
+// =====================
+// Función para eliminar una tarjeta
+// =====================
+function deleteCard(evt) {
+  const card = evt.target.closest(".gallery__card");
+  card.remove();
+}
+
+// =====================
+// Función para crear tarjetas iniciales
+// =====================
+function createInitialCards() {
+  initialCards.forEach((card) => {
+    addCard(card.name, card.link);
+  });
 }
 
 // =====================
@@ -133,3 +153,4 @@ addForm.addEventListener("submit", handleAddFormSubmit);
 likeButtons.forEach((button) =>
   button.addEventListener("click", handleLikeButtonClick)
 );
+deleteButtons.forEach((button) => button.addEventListener("click", deleteCard));
