@@ -77,17 +77,20 @@ function openImage(name, link) {
 // Funciones para cerrar popups
 function closePopupByButton() {
   popup.classList.remove("popup_visible");
+  resetValidation();
 }
 
 function closePopupByOverlay(evt) {
   if (evt.target === popup) {
     popup.classList.remove("popup_visible");
+    resetValidation();
   }
 }
 
 function closePopupByEsc(evt) {
   if (evt.key === "Escape") {
     popup.classList.remove("popup_visible");
+    resetValidation();
   }
 }
 
@@ -116,6 +119,7 @@ function handleProfileFormSubmit(evt) {
   profileName.textContent = inputName.value;
   profileDescription.textContent = inputDescription.value;
   popup.classList.remove("popup_visible");
+  resetValidation();
 }
 
 function handleAddFormSubmit(evt) {
@@ -124,7 +128,7 @@ function handleAddFormSubmit(evt) {
   const link = addForm.querySelector(".popup__add-form-field-image").value;
   addCard(name, link);
   popup.classList.remove("popup_visible");
-  addForm.reset();
+  resetValidation(); // resetValidation ya incluye form.reset()
 }
 
 // Función para manejar el evento de "me gusta"
