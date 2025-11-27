@@ -83,6 +83,9 @@
   top: 10px;
   right: 10px;
   background: url(../images/delete.svg);
+  background-repeat: no-repeat;
+  padding: 0;
+  background-size: contain;
 }
 
 .gallery__card-delete:hover {
