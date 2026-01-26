@@ -43,7 +43,7 @@ const toggleButtonState = (inputList, buttonElement) => {
 // Adjuntar listeners de eventos a todos los campos dentro de un formulario/fieldset
 const setEventListeners = (formElement) => {
   const inputList = Array.from(
-    formElement.querySelectorAll(".popup__form-field-input")
+    formElement.querySelectorAll(".popup__form-field-input"),
   );
   const buttonElement = formElement.querySelector(".popup__form-button");
 
@@ -66,7 +66,7 @@ const enableValidation = () => {
     });
 
     const fieldsetList = Array.from(
-      formElement.querySelectorAll(".popup__form-fieldset")
+      formElement.querySelectorAll(".popup__form-fieldset"),
     );
 
     fieldsetList.forEach((fieldset) => {
@@ -93,7 +93,7 @@ const resetValidation = () => {
 
     // Limpiar todos los errores visuales
     const inputList = Array.from(
-      formElement.querySelectorAll(".popup__form-field-input")
+      formElement.querySelectorAll(".popup__form-field-input"),
     );
     const buttonElement = formElement.querySelector(".popup__form-button");
 
@@ -101,7 +101,7 @@ const resetValidation = () => {
     inputList.forEach((inputElement) => {
       inputElement.classList.remove("popup__form-field-input-type-error");
       const errorElement = formElement.querySelector(
-        `.${inputElement.id}-error`
+        `.${inputElement.id}-error`,
       );
       if (errorElement) {
         errorElement.classList.remove("popup__form-field-input-error-visible");
