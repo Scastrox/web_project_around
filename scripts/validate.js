@@ -109,10 +109,9 @@ const resetValidation = () => {
       }
     });
 
-    // Habilitar el botón de envío
+    // Actualizar estado del botón según validez del formulario
     if (buttonElement) {
-      buttonElement.classList.remove("popup__form-button_disabled");
-      buttonElement.removeAttribute("disabled");
+      toggleButtonState(inputList, buttonElement);
     }
   });
 };

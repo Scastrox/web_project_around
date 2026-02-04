@@ -124,8 +124,9 @@ function handleProfileFormSubmit(evt) {
 
 function handleAddFormSubmit(evt) {
   evt.preventDefault();
-  const name = addForm.querySelector(".popup__add-form-field-title").value;
-  const link = addForm.querySelector(".popup__add-form-field-image").value;
+  const name = addForm.querySelector(".popup__add-form-field-title").value.trim();
+  const link = addForm.querySelector(".popup__add-form-field-image").value.trim();
+  if (!name || !link) return;
   addCard(name, link);
   popup.classList.remove("popup_visible");
   resetValidation(); // resetValidation ya incluye form.reset()
