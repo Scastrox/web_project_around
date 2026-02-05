@@ -6,9 +6,7 @@ const closeButton = popup.querySelector(".popup__close-button");
 const profileName = document.querySelector(".profile__info-name");
 const profileDescription = document.querySelector(".profile__info-description");
 const inputName = document.querySelector(".popup__form-field-name");
-const inputDescription = document.querySelector(
-  ".popup__form-field-description"
-);
+const inputDescription = document.querySelector(".popup__form-field-description");
 const form = document.querySelector(".popup__form");
 const addForm = document.querySelector(".popup__add-form");
 const popupEditContainer = document.querySelector(".popup__container-edit");
