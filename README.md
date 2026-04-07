@@ -31,7 +31,3 @@ https://scastrox.github.io/web_project_around/
 - Modulos de JavaScript
 
 ## https://scastrox.github.io/web_project_around/
-
-```
-
-```
