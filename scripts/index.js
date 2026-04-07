@@ -1,3 +1,13 @@
+// Configuración de validación
+const validationConfig = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__form-field-input",
+  submitButtonSelector: ".popup__form-button",
+  inactiveButtonClass: "popup__form-button_disabled",
+  inputErrorClass: "popup__form-field-input-type-error",
+  errorClass: "popup__form-field-input-error-visible",
+};
+
 // Selección de elementos del DOM
 const openFormButton = document.querySelector(".profile__info-edit-button");
 const addButton = document.querySelector(".profile__info-add-button");
@@ -44,6 +54,12 @@ const initialCards = [
   },
 ];
 
+// Instancias de FormValidator para cada formulario
+const profileFormValidator = new FormValidator(validationConfig, form);
+const addFormValidator = new FormValidator(validationConfig, addForm);
+profileFormValidator.setEventListeners();
+addFormValidator.setEventListeners();
+
 // Funciones para abrir popups
 function openEditForm() {
   popup.classList.add("popup_visible");
@@ -59,7 +75,7 @@ function openAddForm() {
   popupEditContainer.style.display = "none";
   imagePopup.style.display = "none";
   popupAddContainer.style.display = "block";
-  addForm.reset();
+  addFormValidator.resetValidation();
 }
 
 function openImage(name, link) {
@@ -73,42 +89,33 @@ function openImage(name, link) {
 }
 
 // Funciones para cerrar popups
-function closePopupByButton() {
+function closePopup() {
   popup.classList.remove("popup_visible");
-  resetValidation();
+  profileFormValidator.resetValidation();
+  addFormValidator.resetValidation();
 }
 
 function closePopupByOverlay(evt) {
   if (evt.target === popup) {
-    popup.classList.remove("popup_visible");
-    resetValidation();
+    closePopup();
   }
 }
 
 function closePopupByEsc(evt) {
   if (evt.key === "Escape") {
-    popup.classList.remove("popup_visible");
-    resetValidation();
+    closePopup();
   }
+}
+
+// Función para crear una tarjeta usando la clase Card
+function createCard(cardData) {
+  const card = new Card(cardData, "#card-template", openImage);
+  return card.generateCard();
 }
 
 // Función para agregar una tarjeta a la galería
 function addCard(name, link) {
-  const cardTemplate = document.querySelector("#card-template").content;
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImage = cardElement.querySelector(".gallery__card-image");
-  const cardTitle = cardElement.querySelector(".gallery__card-title");
-  const likeButton = cardElement.querySelector(".gallery__card-like");
-  const deleteButton = cardElement.querySelector(".gallery__card-delete");
-
-  cardImage.src = link;
-  cardImage.alt = name;
-  cardTitle.textContent = name;
-
-  likeButton.addEventListener("click", handleLikeButtonClick);
-  deleteButton.addEventListener("click", deleteCard);
-  cardImage.addEventListener("click", () => openImage(name, link));
-  gallery.prepend(cardElement);
+  gallery.prepend(createCard({ name, link }));
 }
 
 // Funciones de manejo de formularios
@@ -116,8 +123,7 @@ function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = inputName.value;
   profileDescription.textContent = inputDescription.value;
-  popup.classList.remove("popup_visible");
-  resetValidation();
+  closePopup();
 }
 
 function handleAddFormSubmit(evt) {
@@ -126,36 +132,19 @@ function handleAddFormSubmit(evt) {
   const link = addForm.querySelector(".popup__add-form-field-image").value.trim();
   if (!name || !link) return;
   addCard(name, link);
-  popup.classList.remove("popup_visible");
-  resetValidation(); // resetValidation ya incluye form.reset()
-}
-
-// Función para manejar el evento de "me gusta"
-function handleLikeButtonClick(evt) {
-  evt.target.classList.toggle("gallery__card-like_active");
-}
-
-// Función para eliminar una tarjeta
-function deleteCard(evt) {
-  const card = evt.target.closest(".gallery__card");
-  card.remove();
-}
-
-// Función para crear tarjetas iniciales
-function createInitialCards() {
-  initialCards.forEach((card) => {
-    addCard(card.name, card.link);
-  });
+  closePopup();
 }
 
 // Asignación de eventos
 openFormButton.addEventListener("click", openEditForm);
 addButton.addEventListener("click", openAddForm);
-closeButton.addEventListener("click", closePopupByButton);
+closeButton.addEventListener("click", closePopup);
 popup.addEventListener("click", closePopupByOverlay);
 document.addEventListener("keydown", closePopupByEsc);
 form.addEventListener("submit", handleProfileFormSubmit);
 addForm.addEventListener("submit", handleAddFormSubmit);
 
 // Crear las tarjetas iniciales al cargar la página
-createInitialCards();
+initialCards.forEach((cardData) => {
+  gallery.prepend(createCard(cardData));
+});
