@@ -4,12 +4,6 @@
 
 Este proyecto fue desarrollado con HTML, CSS y JavaScript vanilla, con una estructura modular orientada a componentes.
 
-## Demo
-
-Repositorio publicado en GitHub Pages:
-
-https://scastrox.github.io/web_project_around/
-
 ## Funcionalidades
 
 - Edicion del perfil del usuario desde un formulario emergente.
@@ -30,4 +24,6 @@ https://scastrox.github.io/web_project_around/
 - Metodologia BEM para clases y organizacion de estilos
 - Modulos de JavaScript
 
-## https://scastrox.github.io/web_project_around/
+Repositorio publicado en GitHub Pages:
+
+https://scastrox.github.io/web_project_around/
