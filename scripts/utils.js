@@ -17,3 +17,10 @@ export function handleEscClose(evt, closeFn) {
     closeFn();
   }
 }
+
+export function setEventListeners(popup, closeFn) {
+  const closeButton = popup.querySelector(".popup__close-button");
+  closeButton.addEventListener("click", closeFn);
+  popup.addEventListener("click", (evt) => handleOverlayClick(evt, popup, closeFn));
+  document.addEventListener("keydown", (evt) => handleEscClose(evt, closeFn));
+}

@@ -1,6 +1,6 @@
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
-import { openPopup, closePopup, handleOverlayClick, handleEscClose } from "./utils.js";
+import { openPopup, closePopup, setEventListeners } from "./utils.js";
 
 // Configuración de validación
 const validationConfig = {
@@ -15,7 +15,6 @@ const validationConfig = {
 const openFormButton = document.querySelector(".profile__info-edit-button");
 const addButton = document.querySelector(".profile__info-add-button");
 const popup = document.querySelector(".popup");
-const closeButton = popup.querySelector(".popup__close-button");
 const profileName = document.querySelector(".profile__info-name");
 const profileDescription = document.querySelector(".profile__info-description");
 const inputName = document.querySelector(".popup__form-field-name");
@@ -129,9 +128,7 @@ function handleAddFormSubmit(evt) {
 // Asignación de eventos
 openFormButton.addEventListener("click", openEditForm);
 addButton.addEventListener("click", openAddForm);
-closeButton.addEventListener("click", handleClosePopup);
-popup.addEventListener("click", (evt) => handleOverlayClick(evt, popup, handleClosePopup));
-document.addEventListener("keydown", (evt) => handleEscClose(evt, handleClosePopup));
+setEventListeners(popup, handleClosePopup);
 form.addEventListener("submit", handleProfileFormSubmit);
 addForm.addEventListener("submit", handleAddFormSubmit);
 
