@@ -1,3 +1,7 @@
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+import { openPopup, closePopup, handleOverlayClick, handleEscClose } from "./utils.js";
+
 // Configuración de validación
 const validationConfig = {
   formSelector: ".popup__form",
@@ -62,7 +66,7 @@ addFormValidator.setEventListeners();
 
 // Funciones para abrir popups
 function openEditForm() {
-  popup.classList.add("popup_visible");
+  openPopup(popup);
   popupEditContainer.style.display = "block";
   popupAddContainer.style.display = "none";
   imagePopup.style.display = "none";
@@ -71,7 +75,7 @@ function openEditForm() {
 }
 
 function openAddForm() {
-  popup.classList.add("popup_visible");
+  openPopup(popup);
   popupEditContainer.style.display = "none";
   imagePopup.style.display = "none";
   popupAddContainer.style.display = "block";
@@ -82,29 +86,17 @@ function openImage(name, link) {
   imagePopupPhoto.src = link;
   imagePopupPhoto.alt = name;
   imagePopupText.textContent = name;
-  popup.classList.add("popup_visible");
+  openPopup(popup);
   imagePopup.style.display = "block";
   popupEditContainer.style.display = "none";
   popupAddContainer.style.display = "none";
 }
 
-// Funciones para cerrar popups
-function closePopup() {
-  popup.classList.remove("popup_visible");
+// Función para cerrar el popup y resetear validaciones
+function handleClosePopup() {
+  closePopup(popup);
   profileFormValidator.resetValidation();
   addFormValidator.resetValidation();
-}
-
-function closePopupByOverlay(evt) {
-  if (evt.target === popup) {
-    closePopup();
-  }
-}
-
-function closePopupByEsc(evt) {
-  if (evt.key === "Escape") {
-    closePopup();
-  }
 }
 
 // Función para crear una tarjeta usando la clase Card
@@ -123,7 +115,7 @@ function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = inputName.value;
   profileDescription.textContent = inputDescription.value;
-  closePopup();
+  handleClosePopup();
 }
 
 function handleAddFormSubmit(evt) {
@@ -132,15 +124,15 @@ function handleAddFormSubmit(evt) {
   const link = addForm.querySelector(".popup__add-form-field-image").value.trim();
   if (!name || !link) return;
   addCard(name, link);
-  closePopup();
+  handleClosePopup();
 }
 
 // Asignación de eventos
 openFormButton.addEventListener("click", openEditForm);
 addButton.addEventListener("click", openAddForm);
-closeButton.addEventListener("click", closePopup);
-popup.addEventListener("click", closePopupByOverlay);
-document.addEventListener("keydown", closePopupByEsc);
+closeButton.addEventListener("click", handleClosePopup);
+popup.addEventListener("click", (evt) => handleOverlayClick(evt, popup, handleClosePopup));
+document.addEventListener("keydown", (evt) => handleEscClose(evt, handleClosePopup));
 form.addEventListener("submit", handleProfileFormSubmit);
 addForm.addEventListener("submit", handleAddFormSubmit);
 
