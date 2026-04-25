@@ -1,111 +1,135 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="info" content="Alrededor de los EEUU" />
+    <meta name="keywords" content="Lugares de Estados Unidos" />
+    <meta name="author" content="Sergio Castro" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <title>Alrededor de los EU</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="info" content="Alrededor de los EEUU">
-  <meta name="keywords" content="Lugares de Estados Unidos">
-  <meta name="author" content="Sergio Castro">
-  <link rel="shortcut icon" href="favicon.ico">
-  <link rel="stylesheet" href="./pages/index.css">
-  <title> Alrededor de los EU</title>
-</head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <img class="header__logo" src="./images/logo_around.svg" alt="logo" />
+      </header>
 
-<body>
-  <div class="page">
-
-    <header class="header">
-      <img class="header__logo" src="./images/logo_around.svg" alt="logo">
-    </header>
-
-    <main class="content">
-      <section class="profile">
-        <div class="profile__container">
-          <div class="profile__content">
-            <div class="profile__avatar">
-              <img class="profile__picture" src="./images/profile-picture.jpeg" alt="profile-picture">
+      <main class="content">
+        <section class="profile">
+          <div class="profile__container">
+            <div class="profile__content">
+              <div class="profile__avatar">
+                <img class="profile__picture" src="./images/profile-picture.jpeg" alt="profile-picture" />
+              </div>
+              <div class="profile__info">
+                <h1 class="profile__info-name">Sergio Castro</h1>
+                <p class="profile__info-description">Estudiante</p>
+              </div>
+              <button class="profile__info-edit-button" type="button"></button>
             </div>
-            <div class="profile__info">
-              <h1 class="profile__info-name">Sergio Castro</h1>
-              <p class="profile__info-description">Estudiante</p>
+          </div>
+          <div>
+            <button class="profile__info-add-button" type="button"></button>
+          </div>
+        </section>
+
+        <section class="gallery">
+          <!-- Las tarjetas se generarán dinámicamente con JavaScript -->
+        </section>
+
+        <template id="card-template">
+          <div class="gallery__card">
+            <img class="gallery__card-image" src="" alt="" />
+            <button class="gallery__card-delete" type="button"></button>
+            <div class="gallery__card-info">
+              <h2 class="gallery__card-title"></h2>
+              <img class="gallery__card-like" src="./images/like.svg" />
             </div>
-            <button class="profile__info-edit-button" type="button"></button>
           </div>
-        </div>
-        <div>
-          <button class="profile__info-add-button" type="button"></button>
-        </div>
-      </section>
+        </template>
 
-      <section class="gallery">
-        <!-- Las tarjetas se generarán dinámicamente con JavaScript -->
-      </section>
+        <section class="popup">
+          <div class="popup__close-button"></div>
 
-      <template id="card-template">
-        <div class="gallery__card">
-          <img class="gallery__card-image" src="" alt="">
-          <button class="gallery__card-delete" type="button"></button>
-          <div class="gallery__card-info">
-            <h2 class="gallery__card-title"></h2>
-            <img class="gallery__card-like" src="./images/like.svg">
+          <div class="popup__container popup__container-edit">
+            <h2 class="popup__form-title">Editar perfil</h2>
+            <form id="profile-form" class="popup__form" novalidate>
+              <fieldset class="popup__form-fieldset">
+                <input
+                  class="popup__form-field-input popup__form-field-name"
+                  type="text"
+                  id="name-input"
+                  name="name"
+                  placeholder="Nombre"
+                  minlength="2"
+                  maxlength="40"
+                  required=""
+                />
+                <span class="popup__form-field-error name-input-error"></span>
+                <input
+                  class="popup__form-field-input popup__form-field-description"
+                  type="text"
+                  id="description-input"
+                  name="description"
+                  placeholder="Acerca de mí"
+                  minlength="2"
+                  maxlength="200"
+                  required=""
+                />
+                <span class="popup__form-field-error description-input-error"></span>
+                <button type="submit" class="popup__form-button popup__form-save-button">Guardar</button>
+              </fieldset>
+            </form>
           </div>
-        </div>
-      </template>
 
-      <section class="popup">
-        <div class="popup__close-button"></div>
-
-        <div class="popup__container popup__container-edit">
-          <h2 class="popup__form-title">Editar perfil</h2>
-          <form id="profile-form" class="popup__form" novalidate>
-            <fieldset class="popup__form-fieldset">
-              <input class="popup__form-field-input popup__form-field-name" type="text" id="name-input" name="name"
-                placeholder="Nombre" minlength="2" maxlength="40" required="">
-              <span class="popup__form-field-error name-input-error"></span>
-              <input class="popup__form-field-input popup__form-field-description" type="text" id="description-input"
-                name="description" placeholder="Acerca de mí" minlength="2" maxlength="200" required="">
-              <span class="popup__form-field-error description-input-error"></span>
-              <button type="submit" class="popup__form-button popup__form-save-button">Guardar</button>
-            </fieldset>
-          </form>
-        </div>
-
-        <div class="popup__container popup__container-add">
-          <h2 class="popup__form-title">Nuevo Lugar</h2>
-          <form id="add-form" class="popup__form popup__add-form" novalidate>
-            <fieldset class="popup__form-fieldset">
-              <input class="popup__form-field-input popup__add-form-field-title" type="text" id="title-add-card"
-                name="name" placeholder="Título" minlength="2" maxlength="30" required="">
-              <span class="popup__form-field-error title-add-card-error"></span>
-              <input class="popup__form-field-input popup__add-form-field-image" type="url" id="link-add-card"
-                name="link" placeholder="Enlace a la imagen" required="">
-              <span class="popup__form-field-error link-add-card-error"></span>
-              <button type="submit" class="popup__form-button popup__add-form-create-button">Crear</button>
-            </fieldset>
-          </form>
-        </div>
-
-        <div class="popup__image">
-          <div class="popup__image-container">
-            <img class="popup__image-photo" src="./images/lago-louise.png" alt="Lago Louise">
+          <div class="popup__container popup__container-add">
+            <h2 class="popup__form-title">Nuevo Lugar</h2>
+            <form id="add-form" class="popup__form popup__add-form" novalidate>
+              <fieldset class="popup__form-fieldset">
+                <input
+                  class="popup__form-field-input popup__add-form-field-title"
+                  type="text"
+                  id="title-add-card"
+                  name="name"
+                  placeholder="Título"
+                  minlength="2"
+                  maxlength="30"
+                  required=""
+                />
+                <span class="popup__form-field-error title-add-card-error"></span>
+                <input
+                  class="popup__form-field-input popup__add-form-field-image"
+                  type="url"
+                  id="link-add-card"
+                  name="link"
+                  placeholder="Enlace a la imagen"
+                  required=""
+                />
+                <span class="popup__form-field-error link-add-card-error"></span>
+                <button type="submit" class="popup__form-button popup__add-form-create-button">Crear</button>
+              </fieldset>
+            </form>
           </div>
-          <div class="popup__image-text-container">
-            <p class="popup__image-text">Lago Louise</p>
+
+          <div class="popup__image">
+            <div class="popup__image-container">
+              <img class="popup__image-photo" src="./images/lago-louise.png" alt="Lago Louise" />
+            </div>
+            <div class="popup__image-text-container">
+              <p class="popup__image-text">Lago Louise</p>
+            </div>
           </div>
-        </div>
+        </section>
+      </main>
 
-      </section>
+      <footer class="footer">
+        <p class="footer__text">© 2026 Sergio Castro</p>
+      </footer>
+    </div>
 
-    </main>
-
-    <footer class="footer">
-      <p class="footer__text">© 2026 Sergio Castro</p>
-    </footer>
-
-  </div>
-
-  <script type="module" src="./scripts/index.js"></script>
-</body>
-
+    <script type="module" src="./scripts/index.js"></script>
+  </body>
 </html>
