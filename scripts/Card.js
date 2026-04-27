@@ -7,10 +7,7 @@ export default class Card {
   }
 
   _getTemplate() {
-    return document
-      .querySelector(this._templateSelector)
-      .content.cloneNode(true)
-      .querySelector(".gallery__card");
+    return document.querySelector(this._templateSelector).content.cloneNode(true).querySelector(".gallery__card");
   }
 
   _handleLikeClick() {

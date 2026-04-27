@@ -18,9 +18,7 @@ const popup = document.querySelector(".popup");
 const profileName = document.querySelector(".profile__info-name");
 const profileDescription = document.querySelector(".profile__info-description");
 const inputName = document.querySelector(".popup__form-field-name");
-const inputDescription = document.querySelector(
-  ".popup__form-field-description",
-);
+const inputDescription = document.querySelector(".popup__form-field-description");
 const form = document.querySelector(".popup__form");
 const addForm = document.querySelector(".popup__add-form");
 const popupEditContainer = document.querySelector(".popup__container-edit");
@@ -120,12 +118,8 @@ function handleProfileFormSubmit(evt) {
 
 function handleAddFormSubmit(evt) {
   evt.preventDefault();
-  const name = addForm
-    .querySelector(".popup__add-form-field-title")
-    .value.trim();
-  const link = addForm
-    .querySelector(".popup__add-form-field-image")
-    .value.trim();
+  const name = addForm.querySelector(".popup__add-form-field-title").value.trim();
+  const link = addForm.querySelector(".popup__add-form-field-image").value.trim();
   if (!name || !link) return;
   addCard(name, link);
   handleClosePopup();
