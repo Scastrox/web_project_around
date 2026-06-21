@@ -1,13 +1,16 @@
 export default class Card {
-  constructor(data, templateSelector, handleImageClick) {
+  constructor(data, templateSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
-    this._handleImageClickCallback = handleImageClick;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
-    return document.querySelector(this._templateSelector).content.cloneNode(true).querySelector(".gallery__card");
+    return document
+      .querySelector(this._templateSelector)
+      .content.cloneNode(true)
+      .querySelector(".gallery__card");
   }
 
   _handleLikeClick() {
@@ -18,14 +21,10 @@ export default class Card {
     this._element.remove();
   }
 
-  _handleImageClick() {
-    this._handleImageClickCallback(this._name, this._link);
-  }
-
   _setEventListeners() {
     this._likeButton.addEventListener("click", () => this._handleLikeClick());
     this._deleteButton.addEventListener("click", () => this._handleDeleteClick());
-    this._cardImage.addEventListener("click", () => this._handleImageClick());
+    this._cardImage.addEventListener("click", () => this._handleCardClick(this._name, this._link));
   }
 
   generateCard() {
