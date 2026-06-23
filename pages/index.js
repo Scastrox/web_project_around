@@ -86,8 +86,7 @@ addPopup.setEventListeners();
 
 document.querySelector(".profile__info-edit-button").addEventListener("click", () => {
   const { name, job } = userInfo.getUserInfo();
-  document.querySelector("#name-input").value = name;
-  document.querySelector("#description-input").value = job;
+  editPopup.setInputValues({ name, description: job });
   profileFormValidator.resetValidation();
   editPopup.open();
 });
