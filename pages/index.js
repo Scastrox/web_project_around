@@ -91,7 +91,7 @@ api
       {
         items: cards,
         renderer: (cardData) => {
-          cardSection.addItem(createCard(cardData));
+          cardSection.appendItem(createCard(cardData));
         },
       },
       ".gallery"
