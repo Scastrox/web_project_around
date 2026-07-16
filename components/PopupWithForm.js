@@ -5,6 +5,12 @@ export default class PopupWithForm extends Popup {
     super(popupSelector);
     this._handleFormSubmit = handleFormSubmit;
     this._form = this._popup.querySelector(".popup__form");
+    this._submitButton = this._form.querySelector(".popup__form-button");
+    this._submitButtonText = this._submitButton.textContent;
+  }
+
+  renderLoading(isLoading, loadingText = "Guardando...") {
+    this._submitButton.textContent = isLoading ? loadingText : this._submitButtonText;
   }
 
   _getInputValues() {
