@@ -29,6 +29,10 @@
   border-radius: 50%;
 }
 
+.profile__picture:not([src]) {
+  visibility: hidden;
+}
+
 .profile__avatar-edit-button {
   position: absolute;
   top: 0;
