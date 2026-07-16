@@ -157,6 +157,10 @@
   min-height: 181px;
 }
 
+.popup__container_type_avatar {
+  min-height: auto;
+}
+
 .popup__confirm-button {
   display: block;
   width: 358px;
