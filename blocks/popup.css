@@ -153,6 +153,22 @@
   cursor: pointer;
 }
 
+.popup__container_type_delete {
+  min-height: 181px;
+}
+
+.popup__confirm-button {
+  display: block;
+  width: 358px;
+  margin: 0 auto 36px;
+  border: none;
+}
+
+.popup__confirm-button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
 .popup__image-container {
   display: flex;
   justify-content: center;
@@ -221,6 +237,12 @@
 
   .popup__form-save-button,
   .popup__add-form-create-button {
+    height: 46px;
+  }
+
+  .popup__confirm-button {
+    width: 100%;
+    max-width: 238px;
     height: 46px;
   }
 

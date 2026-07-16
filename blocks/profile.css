@@ -17,10 +17,35 @@
   align-items: center;
 }
 
+.profile__avatar {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
 .profile__picture {
   width: 120px;
   height: 120px;
   border-radius: 50%;
+}
+
+.profile__avatar-edit-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120px;
+  height: 120px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.8) url("../images/edit-avatar-button.svg") center no-repeat;
+  background-size: 26px 26px;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.profile__avatar:hover .profile__avatar-edit-button {
+  opacity: 1;
 }
 
 .profile__info {

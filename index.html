@@ -23,6 +23,7 @@
             <div class="profile__content">
               <div class="profile__avatar">
                 <img class="profile__picture" src="./images/profile-picture.jpeg" alt="profile-picture" />
+                <button class="profile__avatar-edit-button" type="button"></button>
               </div>
               <div class="profile__info">
                 <h1 class="profile__info-name">Sergio Castro</h1>
@@ -116,6 +117,37 @@
                 <button type="submit" class="popup__form-button popup__add-form-create-button">Crear</button>
               </fieldset>
             </form>
+          </div>
+        </section>
+
+        <!-- Popup: Cambiar foto de perfil -->
+        <section class="popup popup_type_avatar" id="avatar-popup">
+          <div class="popup__container">
+            <button class="popup__close-button" type="button"></button>
+            <h2 class="popup__form-title">Cambiar foto de perfil</h2>
+            <form id="avatar-form" class="popup__form" novalidate>
+              <fieldset class="popup__form-fieldset">
+                <input
+                  class="popup__form-field-input"
+                  type="url"
+                  id="avatar-input"
+                  name="avatar"
+                  placeholder="Enlace a la nueva foto de perfil"
+                  required
+                />
+                <span class="popup__form-field-error avatar-input-error"></span>
+                <button type="submit" class="popup__form-button popup__form-save-button">Guardar</button>
+              </fieldset>
+            </form>
+          </div>
+        </section>
+
+        <!-- Popup: Confirmar eliminación de tarjeta -->
+        <section class="popup popup_type_delete" id="delete-popup">
+          <div class="popup__container popup__container_type_delete">
+            <button class="popup__close-button" type="button"></button>
+            <h2 class="popup__form-title">¿Estás seguro?</h2>
+            <button type="button" class="popup__form-button popup__confirm-button">Sí</button>
           </div>
         </section>
 
