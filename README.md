@@ -30,4 +30,4 @@ Este proyecto fue desarrollado con HTML, CSS y JavaScript vanilla, con una estru
 
 Repositorio publicado en GitHub Pages:
 
-[https://scastrox.github.io/web_project_around/](https://scastrox.github.io/web_project_around/)
+[https://scastrox.github.io/web_project_around/src/](https://scastrox.github.io/web_project_around/src/)
